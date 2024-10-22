@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notlar</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .button-container {
+      display: flex;
+      flex-direction: column; /* Butonları alt alta yerleştirir */
+      margin-top: 20px; /* Butonlar için üstten boşluk ekler */
+    }
+    button {
+      margin-bottom: 10px; /* Butonlar arasına boşluk ekler */
+      padding: 5px; /* Butonların içini doldurur */
+      font-size: 14px; /* Buton metin boyutu */
+      background-color: #6a5acd; /* Buton arka plan rengi (mor tonları) */
+      color: white; /* Buton metin rengi */
+      border: none; /* Kenarlık yok */
+      border-radius: 5px; /* Kenarları yuvarlatır */
+      cursor: pointer; /* İmleç değişikliği */
+    }
+    button:hover {
+      background-color: #5c4cbd; /* Hover etkisi */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Azıcık günlük tuttum bebeğim, biraz hislerimden bahsettim</h1>
+    <div class="note-selector">
+      <ul>
+        <li onclick="showNote(1)">6 Ekim Pazar 22:40</li>
+        <li onclick="showNote(2)">7 Ekim Pazartesi 21:35</li>
+        <li onclick="showNote(3)">8 Ekim Salı 23:08</li>
+        <li onclick="showNote(4)">9 Ekim Çarşamba 22:15</li>
+        <li onclick="showNote(5)">10 Ekim Perşembe 23:25</li>
+        <li onclick="showNote(6)">11 Ekim Cuma 22:45</li>
+        <li onclick="showNote(7)">18 Ekim Cuma 00:10</li>
+        <li onclick="showNote(8)">18 Ekim Cuma 22:40</li>
+        <li onclick="showNote(9)">19 Ekim Cumartesi 23:00</li>
+        <li onclick="showNote(10)">21 Ekim Pazartesi 23:18</li>
+        <li onclick="showNote(11)"></li>
+      </ul>
+    </div>
+    <div class="notes">
+      <p id="noteContent">İstediğin birinden başlayabilirsin bir tanem. Evet birazcık az ve kötü bir hediye. özür dilerim</p>
+    </div>
+  </div>
+
+  <script>
+
+    let currentDay = null; // Seçili gün
+
+    function showNote(day) {
+      const notes = [
+        "Bugün ki konuşmamız çok hoşuma gitti. İlk kez seste bu kadar çok ingilizce konuştuk ve normalde ingilizce konuşmaya utanacaksamda senin sayende hiç utanmadım, hatta çok iyi hissettirdi. Bazı noktalarda türkçe konuşmaktan bile iyi geldi diyebilirim. Tabii ki bu birazcık abartı gibi gelebilir ama sesinin tatlığı bana karşı olan nezaketin, hoş görün ve sevgin gerçekten çok iyi hissetmemi sağladı. Belki başkası olsa hiç uğraşmazdı konuşmak istemezdi ama bana gerçekten sevildiğimi hissettirdiğin için teşekkür ederim Elam. Please keep talking english, I love it when you speak english my love. Bunu yazdıktan sonra 1 saat boyunca bu siteyi yapmakla uğraştım bir tanem ve daha yapılacak bir çok şeyi olmasına rağmen yarına bırakıyorum.",
+        "Aşkım bunu hemen telefonu kapattıktan sonra yazıyorum ve bir çok günde de böyle yapıcam yüksek ihtimalle. Burda sana telefondayken bahsedemediğim konuları yazmak istiyorum. Öncelikle biliyorum aşkım yorgunsun, uyumak istiyorsun, derslerin yoğun. Ama (oof duygularımı da yazmak istiyorum şuan az kalsın ağlıyordum.) aşkım seni gerçekten çok seviyorum ve birlikte çok fazla vakit geçirelim, konuşabileceğimiz ne kadar şey varsa üstüne konuşalım, fikirlerimizi belirtelim, gerekirse tartışalım, arada sırada bana sinirlen. Gerçekten bunların hepsini yapmak beni çok mutlu ediyor ve telefonu asla kapatmak istemiyorum. Bugün düne göre biraz daha duygusalım. Kitap konusunda, sipariş ettiğimi söylediğimde, hemen 'Ben gönderirdim.' demen aşırı hoşuma gitti, bunu zaten söylemiştim ama tekrar belirmek istedim. Çünkü gerçekten aşşırı hoşuma gitti, ne biliyim dün de söylemiştim gerçekten sevildiğimi hissettiriyorsun bir tanem. Buraya daha o kadar çok yazmak istediğim şey var ki, hangi birisinden başlasam bilemiyorum. Bu notlarda çok uzun olursa okumaktan sıkılırsın diye korkuyorum biraz. Ama zaten amacım arada sırada açıp gerekirse benim her gün yazdığım gibi her gün 1 tanesini açıp okuman bebeğim. Şuan bu günlükleri çok uzun tutmayıp doğum gününde daha uzun bir yazı yazmak istiyorum. Bi de bunları yazdıktan sonra tekrar okumuyorum yanlış yazdığım veya komik olan şeyler olduğu gibi kalsın okurken sen gül bende utanayım istiyorum.",
+        "Aşkım şimdi aslında nerden başlasam bilemiyorum. Fakat az önce dişimi fln fırçalarken aklıma gelen konudan bahsetmekle başlamak istiyorum. Dış görünüşün gerçekten benim için bir önemi yok, diyemem tabii ki bu çok klişe kaçacak bir cümle olur. O yüzden birazcık hislerimden bahsetmek istiyorum. Daha yaklaşık 4 yıl önce ilk kez fotoğraf attığın zaman bile gözlerime inanamamıştım, yani o kadar güzeldin ki. İlk fotoğrafta sanki işte pinterestten yada internette her hangi bir yerden alıp attığını falan düşünmüştüm o kadar güzel gözükmüştün gözüme. Tabii ki sonradan attığın fotoğraflarla gerçek olduğuna inandım falan filan. Onun dışında kilon ne olursa olsun, kilo al veya çok fazla kilo ver, bebeğim ben bu tarz dış görünüşle alakalı olan şeylerden dolayı sana karşı kötü veya negatif bir duygu hissettem. Seni dış görünüş değişti diye sevmemezlik yapmam. Her nasıl gözüküyor olursan ol, eğer o şekilde kendini iyi hissediyorsan seni o şekilde sevmeye devam edicem, seni asla sevmekten vaz geçmeyeceğim. Lütfen sende önemli olmayan kişilerin düşüncelerini önemseme bebeğimim, ben seni her halinle sevmeye hazırım. Evet bu konuyu yazdığıma göre bir diğerine geçebilirim. Çocuğun seninle konuşması gerçekten hiç hoşuma gitmedi, çok kıskandım. Sende haklısın biraz fazla abarttım galiba ama elimden bir şey gelmiyor  ki bebeğim, çok kıskanıyorum. Yani seninle konuşabilmek için akşama kadar bekliyorum, farkındayım derslerin yoğun ona lafım yok. Ama bu çocuğun gelip seninle sohbet etmeye çalışması aşırı sinirimi bozdu. Hayır bide yani attığı mesajlar falan hoşuma gitmedi aşkım. Ama bir gün geçecek aşkım, her zaman ben görücem seni. Her gün akşama kadar ben konuşucam seninle. Biraz daha yazmak isterim ama saat belli bebeğim uyumamız lazım iyi uykular. Seni çok seviyorum.",
+        "Bunu sen bıcı bıcı yapmaya gittiğinde yazıyorum ki, geldiğinde istediğin an uyuyabilelim bebeğim. Şu konuya deyinmek istiyorum. Ne kadar haklı olsan da, başka erkeklerle konuştuğunu duyduğumda gerçekten kıskanıyorum bir tanem. Bunun için yapabileceğin bir şey yok evet sonuçta arkadaşların ve bende buna karışamam. Ama yine de ne biliyim işte seni gerçekten çok seviyorum bebeğim. Şuan aklıma yazacak fazla bir şey gelmiyor. İçimizdeki şeytan'ı okumak için can atıyorum, hemen okuyayım da üzerine sohbet edelim istiyorum. Hatta bilemiyorum zamanın olur mu ama, bundan sonra da aynı kitapları okuyup onların da üzerine sohbet etmeyi çok isterim bebeğim. Bir anda konudan konuya atladım farkındayım, aklıma geldiği gibi yazıyorum direkt. Yani bilemiyorum asla seni bırakmayacağım yavrum, her zaman yanında olacağım, hiç kuşkun olmasın bir tanem. Seni her şeyden çok seviyorum, sonsuza kadar birlikte kalalım istiyorum.",
+        "Aşkım söz verdim o yüzden bunu ağlamadan yazıcam. Ne konuşmam gerek tam olarak emin değilim. Seninle konuşmayı gerçekten çok seviyorum ve her zaman konuşakım istiyorum. Her gün etütten çık da konuşalım diye düşünerek bekliyorum. E tabii yorgun oluyorsun ve bazen az konuşmak zorunda kalıyoruz, bu da haliyle beni üzüyor bebeğim. Biliyorum sende konuşmak istiyorsun, derslerin yoğun olduğu ve zamanın olmadığı için böyle oluyor biliyorum. Ama üzülüyorum işte, aklıma seninle okulda görüşebilen erkekler geldikçe üzülüyorum, kıskanıyorum, bazen sinirleniyorum. Sınıfta otururken bazı erkeklerin kızlarla konuştuklarını görüyorum doğal olarak, sonra sende böyle erkeklerle konuşuyorsundur diye düşünüp yine kıskanıyorum, üzüyorum kendimi. Tabii ki sana asla erkeklerle iletişim kurma diyemem bebeğim, seninde buna yapabileceğin bir şey yok farkındayım. Ağlamicam söz verdim. Sana ne kadar hak versemde, üzülüyorum. Üzülüyorum çünkü her gün en fazla 2 saat konuşabiliyoruz. Üzülüyorum çünkü erkeklerle konultupunu düşününce kıskanıyorum. Üzülüyorum çünkü diğerleri gibi seni her gün göreniyorum. Üzülüyorum çünkü bu düşünceler yüzünden seni de üzüyorum. Her gece ağladığım için özür dilerim bebeğim, iyi uykular.",
+        "Bugün ne yazabilirim çok fazla bilmiyorum. Yani aklıma pek de bir şey gelmiyor. Az önce dişimi fırçalarken bugün ağlamadığım aklıma geldi, dikkatini çekerim aşkım dün ağladım üzdüm seni belki ama bugün ağlamadım rahat rahat uyuyabileceksin. Yani ne kadar rahat uyursun bilmiyorum konuşmamızın sonuna doğru yine birazcık sinirlendin gibi hissettim, ama yapacak bir şey yok. Bide bugün biraz daha az konuştuk gibi hissettim fakat yarın daha çok konuşuruz diye düşünüyorum, umarım da düşündüğüm  gibi olur. Bide tabii ki Pazar gününü birlikte geçirelim isterdim ama seninde başka bir planın olmasına bir şey diyemem o yüzden onun için de yapacak bir şey yok. Bugün bilmiyorum kötü bir his var içimde ama yani sanırım az konuştuk diye bilmiyorum. Şuan aklıma daha yazabileceğim başka bir şey gelmiyor, hee şey geldi. Oof. Ya bu of konusunda da genel olarak belki dikkatini çekmek için belki hissettiğim bir duyguyu ifade edemediğim için söyleyip duruyorum, bundan rahatsız mı oldun bilemiyorum ama artık daha çok dikkat edicem bir tanem. Ha bide bugün site için biraz daha uğraştım ama sıfır ilerleme kat ettim ve başka bir güne bıraktım, iyi geceler bebeğim.",
+        "Şimdi aşkım normalde 10dk öncesinde fln yazmaya başlicaktım grupta yazılanları fln okudum muhammed bi anda konuyu bana getirmiş flm neyse önemli şeyler değil. Kaç gündür yazmayı aksatıyorum ama o içimden yazmak gelmediği için oluyordu, yani zaten konuşmamız yetiyordu birde yazmak istemiyordum ve uykum oluyordu. Şuan da uykum var ama içimdekileri yazmak istedim. Her gece ağlayıp seninde başını aürıtrığım için özür dilerim aşkım, acaba uyumlu değil miyiz dediğinde gerçekten çok garip hissettim yani üzüldüm fln ama garipti işte, bi anlık bize olan inancın kaybolup gitti sandım ki yinede sevgini hissediyoeum ama öyle bir cümle kurman garip hissettirdi. Bi de niye böyle düşündüğünü anlayamadım yani dediğin şey çok tatmin etmedi neden uyumlu olmadığımızı düşündün ki. Beni sevdiğini biliyorum yani evet duymam da gerekiyor tabii ki ama bazen aklından geçenleri söylemşyormuşsun gibi hissediyorum, yada kendini açıklamakla uğraşmak istemediğin için susuyormuşsun gibi. Her zaman olmuyor böyle ama bazen işte böyle hissefiyoeum. Buraya kadar hiç öocuktan bahsetmedim bak şaşırtıcı. Neden üzüldüm bilmiyorum ama işte o ss leri attığında ve okudığumda birden içimde bir his oluştu ve rahatsız edici bir histi yani. Bilmiyorum o öocukla konuşmaya ayıracağın vakti bana ayır diye düşündüm. Bilmiyorum belki çok bencilce bir düşünceydi ama elimde değil ki çok istiyorum seni. Daha da uyumazsam yarın uykusuz kalmamak için burada bitiriyorum sende uyumamı isterdin bir tanem. İyi uykular seni çok seviyorum.",
+        "Bugün aslında yazmak istemiyordum, hemen uyuyup sabah seninle konuşmak istiyordum. Ama işte çok az komuştuk ve biraz daha tam olarak olmasada konuşmak istedim, o yüzden yazıyorum. Bunu ve öncekini telefondan yazdım çünkü bilgisayarda yazmaya üşeniyorum aslında daha yi ama zaten klavyemde bazı tuşlar basmadığı için çok zor ve sinir bozucu oluyor. Her neyse işte of bebeğim ya gerçekten daha çok zaman geçirmek istiyorum seninle ya of. Bide çok kıskanıyorum zaten biliyorsun. Mesela bugün onulurken yine çocuğa sinirlendim çünkü abi yani yazmak için yazıyor gibi geldi hani bilmiyorum bomboş konuşuyor ve seninde cevap veröen konuşmayı ilerletmene biraz üzülüyorum işte. Ya da biz konulurken bi anda onun mesaj atıp onunl konuşmaya başlaman üzüyor, bugün çok konuşmadın hadi tamam da bizde az konuştuk zaten oooooof, valla şuan düşündükçe daha kötü oluyorum özür dilerim. Fazla yazmicam gerçekten kötü hissettim ağlamak istemiyorum. Seni gerçekten çok seviyorum bir tanem, iyi uykular.",
+        "Eveet çok uykum ve çişim var ama önce bunu yazmak istiyorum. Aslında diyecek çok bir şeyim yok bugün ama yine işte az konuştuğumuz için biraz yazmak istedim. Şimdi yani of öykünün hediyesi kadar mutlu edemicem seni galiba bu günlüğümsü şeyle ama aklıma daha başka bir şey gelmedi özür dilerim bir tanem. Kafamdan bir aürü şey geçiyor ama bilmşyorum ya bu aslında mutlu edebilir gibi düşünmüştüm de bilmiyorum o kadar memnun edemicem sanırım. Yine de sade sade doğum günün kutlu olsun demekten iyi ama işte of aşkım ya. Hediye konusunda biraz kötüyüm sanırım özür dilerim yine biraz boş yapıyorum, yüksek ihtimalle buraları okumadan bile geçebilirsin saçmaladığım için oooooof. Bu yazdıklarımı bir anda çöpe atacak değilim ama harbi öykünün hediyesine sevindiğin kadar sevinecek misin bilmşyorum. Şuan da galiba bunları düşünüp kendimi üzüyorum belki ama of bebeğim ya seni gerçekten çok seviyorum, iyi uykular. Ooooof kötü hissettim kwndimi ya keşke yanında olabilsem bebeğim.",
+        "Off bir tanem gerçekten bu slaytı hazırlarken yoruldum ya ama yazı yazmam lazım o yüzden öhöm öhöm. Son 1 2 gündür gereksiz bir şekilde seni üzdüğüm için özür dilerim bir tanem, biliyorum çok fazla özür dilerim hatta artık gözünde bir manasının kalmamasından korkuyorum aşkım. Yine de gerçekten seni çoook seviyorum iyi ki varsın, iyi ki doğdun, iyi ki hayatımdasın, iyi ki tekrardan mesaj yazmışsın, şuana kadar çıldırıp terk etmediğin için teşekkür ederim, bende seni asla terk etmeyeceğim yani bir daha asla diyeyim. Son 4 ay nasıl geçti hiçbir fikrim yok, yaz tatili boyunca sabahlayışlarımız, farklı farklı oyunlar oynayışımız, daha öncesinden bahsetmemiz, birlikte yaptığımız her şeyden o kadar keyif aldım ki anlatamam bile. Senden asla sıkılmayacağım bir tanem, biliyorum bazen çok saçma salak şeyler söylüyorum ve istemeden de olsa kalbini kırıyorum. Seni üzdüğüm zaman bazen senden daha çok bile üzülüyorum, kendi kendime nasıl bu kadar salaklık yapabiliyorum diyorum ve senden özür dileyip duruyorum ama işte birazcık fazla sanırım. Eskiden terk etme sebebim seni artık sevmeyişim değildi, konuşmadığımız zamanlar bile aklımdaydın ki yine diyeceksin 'depremde 1 tane mesaj bile atmadın.' evet ona diyecek bir şeyim yok bir tanem, o da salaklıklarımdan birisi işte. Bugün sunumda yardımcı olduğun için teşekkür ederim bebeğim, seni çok seviyorum, iyi ki varsın, iyi ki doğdun.",
+      ];
+
+      document.getElementById('noteContent').innerText = notes[day - 1]; // Seçilen günün notunu göster
+      document.getElementById('likeMessage').style.display = "none"; // Beğen mesajını gizle
+      document.getElementById('dislikeMessage').style.display = "none"; // Beğenmeme mesajını gizle
+      document.getElementById('likeButton').style.display = "inline"; // Beğenme butonunu göster
+      document.getElementById('dislikeButton').style.display = "inline"; // Beğenmeme butonunu göster
+      currentDay = day; // Seçili günü güncelle
+    }
+
+    function toggleLike() {
+      const likeMessage = document.getElementById('likeMessage');
+      likeMessage.innerText = messages[currentDay].like; // Gün için uygun beğenme mesajını al
+      likeMessage.style.display = "inline"; // Beğen mesajını göster
+      document.getElementById('dislikeMessage').style.display = "none"; // Beğenmeme mesajını gizle
+      document.getElementById('dislikeButton').style.display = "none"; // Beğenmeme butonunu gizle
+    }
+
+    function toggleDislike() {
+      const dislikeMessage = document.getElementById('dislikeMessage');
+      dislikeMessage.innerText = messages[currentDay].dislike; // Gün için uygun beğenmeme mesajını al
+      dislikeMessage.style.display = "inline"; // Beğenmeme mesajını göster
+      document.getElementById('likeMessage').style.display = "none"; // Beğen mesajını gizle
+      document.getElementById('likeButton').style.display = "none"; // Beğenme butonunu gizle
+    }
+  </script>
+</body>
+</html>

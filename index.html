@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doğum Günü Sürprizi</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>İyi ki Doğdun</h1>
+    <p>Doğum günü hediyeni almak için bu soruya cevap ver:</p>
+    <p class="question">Sana hatırlatıp durduğum söylediğin utanç verici ve komik olan şey ne? (eskilerden düşün)</p>
+    <input type="text" id="firstAnswer" placeholder="Yanıtını buraya gir">
+    <button onclick="checkFirstAnswer()">Yanıtı Kontrol Et</button>
+
+    <div class="second-question" style="display:none;">
+      <p>İkinci soru:</p>
+      <p class="question">sucuk afyon'un mu yoksa kayseri'nin mi?</p>
+      <input type="text" id="secondAnswer" placeholder="Yanıtını buraya gir">
+      <button onclick="checkSecondAnswer()">Yanıtı Kontrol Et</button>
+    </div>
+  </div>
+
+  <script>
+    function checkFirstAnswer() {
+      const firstAnswer = document.getElementById('firstAnswer').value.trim();
+      const correctAnswers = ['Ruhların kaçışı', 'O ne türk dizisi mi'];
+      
+      if (correctAnswers.map(answer => answer.toLowerCase()).includes(firstAnswer.toLowerCase())) {
+        document.querySelector('.second-question').style.display = 'block';
+      } else {
+        alert('O ne ...');
+      }
+    }
+
+    function checkSecondAnswer() {
+  window.location.href = 'notlar.html';
+  }
+  </script>
+</body>
+</html>
